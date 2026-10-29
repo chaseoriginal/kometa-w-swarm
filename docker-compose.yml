@@ -1,23 +1,22 @@
----
 services:
   kometa:
     image: ${image}
     container_name: ${container_name}
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      #- KOMETA_CONFIG=/config/config.yml #optional
-      - KOMETA_TIME=03:00 #optional
-      - KOMETA_RUN=true #optional
-      - KOMETA_TEST=False #optional
-      - KOMETA_NO_MISSING=False #optional
-     
+    - PUID=1000
+    - PGID=1000
+    - TZ=America/Chicago
+    - KOMETA_TIME=03:00
+    - KOMETA_RUN=true
+    - KOMETA_TEST=False
+    - KOMETA_NO_MISSING=False
     deploy:
       placement:
         constraints:
-          - node.labels.deployment.target.kometa == true
+        - node.labels.deployment.target.kometa == true
       restart_policy:
         condition: any
     volumes:
-      - ${config_vol}
+    - ${config_vol}
+    - /var/lib/docker/volumes/kometa-w-swarm/config:/config
+volumes: {}
