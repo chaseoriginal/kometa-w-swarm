@@ -1,7 +1,7 @@
 services:
   kometa:
-    image: ${image}
-    container_name: ${container_name}
+    image: lscr.io/linuxserver/kometa:latest
+    container_name: kometa-w-swarm_kometa
     environment:
     - PUID=1000
     - PGID=1000
@@ -10,6 +10,7 @@ services:
     - KOMETA_RUN=true
     - KOMETA_TEST=False
     - KOMETA_NO_MISSING=False
+    - KOMETA_CONFIG=/config/config.yml
     deploy:
       placement:
         constraints:
