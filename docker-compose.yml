@@ -18,6 +18,7 @@ services:
       restart_policy:
         condition: any
     volumes:
-    - ${config_vol}
-    - /var/lib/docker/volumes/kometa-w-swarm/config:/config
-volumes: {}
+    - kometa-w-swarm_config:/config
+volumes:
+  kometa-w-swarm_config:
+    name: kometa-w-swarm_config
