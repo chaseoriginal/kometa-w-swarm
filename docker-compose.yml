@@ -1,6 +1,6 @@
 services:
   kometa:
-    image: lscr.io/linuxserver/kometa:latest
+    image: v2.5.5-ls4
     container_name: kometa-w-swarm_kometa
     environment:
     - PUID=1000
